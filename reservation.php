@@ -2,6 +2,8 @@
 //include auth.php file on all secure pages
 require_once('includes/config.php');
 include("includes/auth.php");
+require('layout/header.php');
+require('layout/nav_login.php');
 
 $userid = $_SESSION['uid'];
 
@@ -30,7 +32,7 @@ else if (!$result) {
   }else{
 
 
-require('layout/header.php');
+
 ?>
 
 <div class="container">

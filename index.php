@@ -3,6 +3,8 @@ require_once('includes/config.php');
 include("includes/auth.php");
 $title = 'Dashboard';
 require('layout/header.php');
+require('layout/nav_login.php');
+
 
 $username = $_SESSION['username'];
 
@@ -16,10 +18,11 @@ while($row=mysqli_fetch_assoc($result)){
 ?>
 
 <div class="container">
+  <br>
 <p>Welcome to Dashboard.</p>
 <p><a href="reservation.php">Make Reservation</a></p>
-<p><a href="view.php">View Reservations</a><p>
-<p><a href="details.php">Account Details</a><p>
+<p><a href="manage.php">View Reservations</a><p>
+<p><a href="profile.php">Account Details</a><p>
 <p><a href="logout.php">Logout</a></p>
 </div>
 

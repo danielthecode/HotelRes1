@@ -1,16 +1,16 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">The Hotel Bookings</a>
+      <a class="navbar-brand" href="index.php">The Hotel Bookings</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
+    <ul class="navbar-nav">
+      <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+      <li><a class="nav-link" href="#">About</a></li>
+      <li><a class="nav-link" href="#">Contact</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-      <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a class="nav-link" href="register.php"><i class="fas fa-sign-in-alt"></i> Sign-up</a></li>
+      <li><a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt"></i> Sign-in</a></li>
     </ul>
   </div>
 </nav>

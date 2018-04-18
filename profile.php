@@ -3,6 +3,7 @@ require_once('includes/config.php');
 include("includes/auth.php");
 $title = 'Login';
 require('layout/header.php');
+require('layout/nav_login.php');
 $suser = $_SESSION['username'];
 
  ?>
@@ -46,7 +47,7 @@ $suser = $_SESSION['username'];
     ';
   }
  ?>
-
+<br>
  <a href="index.php">Back to Dashboard</a>
 
 

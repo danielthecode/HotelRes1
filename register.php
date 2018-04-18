@@ -36,75 +36,46 @@ VALUES ('$firstname', '$lastname','$username', '".md5($password)."','$address','
 
  ?>
 <div class="container">
-   	<h1>Register</h1>
+   	  <div class="signup-form">
  	<form class="form-horizontal" role="form" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-
+<h2 class="text-center">Sign Up</h2>
     <div class="form-group">
-      <label for="inputFirstName" class="control-label col-sm-2">First Name:</label>
-        <div class="col-sm-5">
       	<input type="text" name="firstname" id="inputFirstName" class="form-control"  placeholder="First Name" required autofocus>
-      </div>
     </div>
 
     <div class="form-group">
-      <label for="inputLastName" class="control-label col-sm-2">Last Name:</label>
-      <div class="col-sm-5">
    		<input type="text" name="lastname" id="inputLastName" class="form-control" placeholder="Last Name" required>
     </div>
-    </div>
 
     <div class="form-group">
-      <label for="inputEmail" class="control-label col-sm-2">Email:</label>
-      <div class="col-sm-5">
       <input type="text" name="email" id="inputEmail" class="form-control"  placeholder="Email" required>
     </div>
-    </div>
 
     <div class="form-group">
-      <label for="inputAddress" class="control-label col-sm-2">Address:</label>
-      <div class="col-sm-5">
    		<input type="text" name="address" id="inputAddress" class="form-control" placeholder="Address" required>
     </div>
-    </div>
 
     <div class="form-group">
-      <label for="inputContactNo" class="control-label col-sm-2">Contact No:</label>
-      <div class="col-sm-5">
    		<input type="text" name="contactno" id="inputContactNo" class="form-control" placeholder="Contact No" required>
     </div>
-    </div>
 
     <div class="form-group">
-      <label for="inputUsername" class="control-label col-sm-2">Username:</label>
-      <div class="col-sm-5">
    		<input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required>
-      </div>
     </div>
 
     <div class="form-group">
-      <label for="inputPassword" class="control-label col-sm-2">Password:</label>
-      <div class="col-sm-5">
    		<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
     </div>
-    </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-2"></label>
-      <div class="col-sm-5">
-      <input type="submit" class="btn btn-dark btn-block" name="submit" value="Register"/>
+      <button type="submit" class="btn btn-dark btn-block" name="submit">Register</button>
+    </div>
+        </form>
+        <p class="text-center">Alredy have an account? <a href="login.php">Sign-In</a></p>
       </div>
-    </div>
-
-    <div class="form-group">
-   	 <p class="control-label col-sm-2">
-   		 <div class="col-sm-5">
-   	     Already have an account? <a href="Login.php">Login</a></p>
-   	 </div>
-    </div>
 
  </div>
 
-</div>
 <?php } ?>
 
 <?php
