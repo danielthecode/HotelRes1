@@ -1,0 +1,1 @@
+<h1><?php echo $search1->room_no ?></h1>
