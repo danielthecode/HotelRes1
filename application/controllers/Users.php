@@ -30,7 +30,8 @@ class Users extends CI_Controller{
 
         if(isset($_POST['search'])){
 
-             $this->User_model->search_reservation();
+            $this->User_model->search_reservation();
+            
 
         }
         
@@ -79,10 +80,17 @@ class Users extends CI_Controller{
             
         }
 
+
+        $this->load->model('User_model');
+
+        $data['room'] = $this->User_model->get_room();
+
+        
+
         //load views
         $this->load->view('templates/header');
         $this->load->view('templates/logged_navbar');
-        $this->load->view('user/results');
+        $this->load->view('user/results', $data);
         $this->load->view('templates/footer');
     }
     
