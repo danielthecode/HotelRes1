@@ -4,8 +4,6 @@
         <li class="dropdown">
             <a  href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><b><?php echo $_SESSION['admin_username'] ?></b></a>
             <ul class="dropdown-menu bg-dark navbar-dark">
-                <li><a class="nav-link" href="manage.php">Manage Reservations</a></li>
-                <li><a class="nav-link" href="profile.php"> Edit Profile</a></li>
                 <li><a class="nav-link" href="#">Change Password</a></li>
                 <li class="divider"></li>
                 <li><a class="nav-link" href="<?php echo base_url(); ?>/admin_auth/logout"> Logout</a></li>

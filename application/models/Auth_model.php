@@ -1,4 +1,4 @@
-<? php_ini_loaded_file
+<?php 
 
 class Auth_model extends CI_Model{
 
@@ -6,5 +6,14 @@ class Auth_model extends CI_Model{
         parent::__construct();
     }
 
+
+    public function get_all_rooms(){
+
+        $this->db->select('*');
+        $this->db->from('room');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
     
 }

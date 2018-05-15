@@ -1,5 +1,4 @@
 
-<div class="container-fluid">
 <div id="slider" class="carousel slide" data-ride="carousel">
 
   <!-- Indicators -->
@@ -45,8 +44,8 @@
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>
-</div>
 <br>
+
 <div class="container-fluid">
 
         
@@ -63,62 +62,45 @@
   <div class="row">
     <div class="col-md-6 mb-3">
       <label class="control-label" for="check_in">Check-In Date</label>
-      <input class="form-control" id="date" name="check_in" placeholder="MM/DD/YYY" value="<?php echo $_SESSION['checkin'];?>" type="text" disabled/>
+      <input class="form-control" id="date" name="check_in" placeholder="MM/DD/YYY" value="<?php echo $_SESSION['checkin'];?>" type="text" readonly/>
     </div>
 
     <div class="col-md-6 mb-3">
       <label for="check_out">Check-out Date</label>
-      <input placeholder="MM/DD/YYY" id="date" type="text" class="form-control"  value="<?php echo $_SESSION['checkout'];?>" name="check_out" disabled>
+      <input placeholder="MM/DD/YYY" id="date" type="text" class="form-control"  value="<?php echo $_SESSION['checkout'];?>" name="check_out" readonly/>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6 mb-3">
       <label for="number_of_guests">Number of Guests</label>
-      <select class="form-control" name="number_guest"  disabled>
-      <option value="<?php echo $_SESSION['no_guests'];?>"><?php echo $_SESSION['no_guests'];?></option>
-      </select>
+      <input  type="text" class="form-control"  value="<?php echo $_SESSION['no_guests'];?>" name="no_guests" readonly/>
     </div>
 
+    
+    <?php foreach ($room as $room) {?>
+    <div class="col-md-6 mb-3">
+      <label for="room_no">Room No</label>
+      <input  type="text" class="form-control"  value="<?php echo $room->room_no;?>" name="room_no" readonly/>
+    </div>
   </div>
 
-  <button class="btn btn-secondary btn-md" name="search">Search</button>
-</form>
-</div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="room_type">Room Type</label>
+      <input type="text" class="form-control"  value="<?php echo $room->room_type;?>" name="room_type"readonly/>
+    </div>
+    </div>
+   <?php } ?>
 
-<br>
-
-<div class="album py-5 bg-light">
-        <div class="container">
-
-          <div class="row">
-          <?php foreach($room as $room) {?>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top"  src="<?php echo base_url(); ?>uploads/<?php echo $room->room_img?>" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text"><?php echo $room->room_type?></p>
-                  <br>
-                  <p class="card-text"> <?php echo $room->room_desc ?></p>
-                  <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                  <a href="<?php echo base_url(); ?>users/booking/<?php echo $room->room_no; ?>">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Book</button>
-                  </a>
-                  <?php
+<?php
                 $this->session->set_flashdata('checkin', $_SESSION['checkin'] );
                 $this->session->set_flashdata('checkout', $_SESSION['checkout']);
                 $this->session->set_flashdata('no_guests', $_SESSION['no_guests']); ?>
-                    </div>
-                    <small class="text-muted">Price: <?php echo $room->room_price ?></small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <?php } ?>
-          </div>
-        </div>
-      </div>
+  <button class="btn btn-secondary btn-md" name="book">Book</button>
+</form>
+</div>
+<br>
 
 <script>
     $(document).ready(function(){

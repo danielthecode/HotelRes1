@@ -8,12 +8,23 @@ class Admin_model extends CI_Model{
             'room_type'=> $this->input->post('room_type'),
             'room_price'=> $this->input->post('room_price'),
             'room_desc'=> $this->input->post('description'),
-            
         );
 
         $this->db->insert('room', $data);
+
         $id = $this->db->insert_id();
         return $id;
+    }
+
+    public function add_img($post_img,$id){
+
+
+        $string = "UPDATE room
+        SET room_img = '$post_img'
+        WHERE room_no = '$id'";
+
+                $query= $this->db->query($string);
+        
     }
 
     public function get_all_rooms(){

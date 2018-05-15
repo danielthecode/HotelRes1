@@ -1,4 +1,4 @@
-<div class="container-fluid">
+
 <div id="slider" class="carousel slide" data-ride="carousel">
 
   <!-- Indicators -->
@@ -7,11 +7,11 @@
     <li data-target="#slider" data-slide-to="1"></li>
     <li data-target="#slider" data-slide-to="2"></li>
   </ul>
-  
+
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="<?php echo base_url(); ?>assets/img/room1.jpg" alt="Los Angeles" width="1600" height="500">
+      <img src="<?php echo base_url(); ?>assets/img/room1.jpg" alt="Los Angeles" width="100%" height="500">
       <div class="carousel-caption">
     <h1>The Pacific Room</h1>
     <p>We had such a great time in LA!</p>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="carousel-item">
-      <img src="<?php echo base_url(); ?>assets/img/room2.jpg" alt="Chicago" width="1600" height="500">
+      <img src="<?php echo base_url(); ?>assets/img/room2.jpg" alt="Chicago" width="100%" height="500">
       <div class="carousel-caption">
     <h1>The Deluxe Room</h1>
     <p>We had such a great time in LA!</p>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="carousel-item">
-      <img src="<?php echo base_url(); ?>assets/img/room3.jpg" alt="New York" width="1600" height="500">
+      <img src="<?php echo base_url(); ?>assets/img/room3.jpg" alt="New York" width="100%" height="500">
       <div class="carousel-caption">
     <h1>The Pacific Room</h1>
     <p>We had such a great time in LA!</p>
@@ -35,7 +35,7 @@
     </div>
 
   </div>
-  
+
   <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#slider" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -44,9 +44,11 @@
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>
-</div>
 <br>
 <div class="container">
+
+
+
 <?php if(isset($_SESSION['success'])) {?>
 
 <div class="alert alert-success"><?php echo $_SESSION['success'];?></div>
@@ -77,17 +79,6 @@
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
-      </select>
-    </div>
-
-    <div class="col-md-3 mb-3">
-      <label for="room_no">Room Type</label>
-      <select class="form-control" name="room_no" required>
-        <?php 
-
-        foreach($room_id AS $room) { ?>
-        <option value="<?php echo $room->room_no; ?>"><?php echo $room->room_type; ?></option>
-        <?php } ?>
       </select>
     </div>
 
@@ -125,8 +116,4 @@
       date_input.datepicker(options);
     });
 </script>
-
-
-  
-  
-  
+<br>

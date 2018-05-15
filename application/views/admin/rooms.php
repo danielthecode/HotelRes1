@@ -33,6 +33,7 @@
                 <th>Room Description</th>
                 <th>Room Image</th>
                 <th solspan="2" style="width:20%;text-align:center">Actions</th>
+                <th>Add Image</th>
               </thead>
               </tr>
               <tbody>
@@ -49,6 +50,11 @@
                     </a>
                     <a href="<?php echo base_url(); ?>admin/delete_room/<?php echo $room->room_no; ?>">
                     <button class="btn btn-danger btn-sm" name="delete"><i class="fa fa-trash"></i></button>
+                    </a>
+                    </td>
+                    <td>
+                    <a href="<?php echo base_url(); ?>admin/upload/<?php echo $room->room_no; ?>">
+                    <button class="btn btn-primary btn-sm" name="edit"><i class="fa fa-edit"></i></button>
                     </a>
                     </td>
                     </tr>

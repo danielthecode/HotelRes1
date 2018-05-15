@@ -142,6 +142,7 @@ class Admin extends CI_Controller{
         }
 
         if(isset($_POST['add'])){
+
             $this->load->model('Admin_model');
             if($this->Admin_model->add_room()){
                 $this->session->set_flashdata('success', 'Room Added Successfully');
@@ -198,6 +199,70 @@ class Admin extends CI_Controller{
         $this->load->view('admin/edit_room', $data);
         $this->load->view('admin/templates/footer');
     }
+
+    public function upload($id){
+        if($_SESSION['admin_logged'] == FALSE){
+            
+            $this->session->set_flashdata('error', 'Please Login first to view this page');
+            
+            redirect('admin_auth/login','refresh');
+            
+        }
+
+
+        $data['id'] = $id;
+
+
+        //load views
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/logged_navbar');
+        $this->load->view('admin/upload', $data);
+        $this->load->view('admin/templates/footer');
+    }
+
+    public function do_upload($id)
+        {
+
+            if($_SESSION['admin_logged'] == FALSE){
+            
+                $this->session->set_flashdata('error', 'Please Login first to view this page');
+                
+                redirect('admin_auth/login','refresh');
+                
+            }
+                $config['upload_path']          = './uploads';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 4000;
+                $config['max_width']            = 5000;
+                $config['max_height']           = 5000;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                    $this->session->set_flashdata('error', 'An Error occured. Please try again later');
+
+                        $this->load->view('admin/upload/'.$id );
+                }
+                else
+                {
+                    $this->session->set_flashdata('success', 'Room Updated Successfully');
+
+                        $post_img = $_FILES['userfile']['name'];
+                        $this->load->model('Admin_model');
+                $this->Admin_model->add_img($post_img, $id);
+                }
+
+               
+
+
+               
+
+                
+                redirect('admin/upload/'.$id,'refresh');
+                
+
+        }
 
     public function employees(){
 

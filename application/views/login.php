@@ -31,6 +31,6 @@
             <a href="#" class="pull-right">Forgot Password?</a>
         </div>
  </form>
-<p class="text-center">Don't have an account? <a href="register.php">Create an Account</a></p>
+<p class="text-center">Don't have an account? <a href="register">Create an Account</a></p>
  </div>
  </div>

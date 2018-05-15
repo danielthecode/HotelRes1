@@ -9,6 +9,30 @@ class Auth extends CI_Controller{
         $_SESSION['user_logged'] = NULL;
     }
 
+    public function index(){
+
+        if( $_SESSION['user_logged'] == TRUE){
+            
+         
+            
+            redirect('admin/reservations','refresh');
+            
+        }
+
+        $this->load->model('Auth_model');
+        
+        $data['rooms'] = $this->Auth_model->get_all_rooms();
+
+        //load views
+        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
+        $this->load->view('index', $data);
+        $this->load->view('templates/footer');
+
+
+
+    }
+
     public function login()
     {
         
@@ -81,7 +105,7 @@ class Auth extends CI_Controller{
 
             
             $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
-            $this->form_validation->set_rules('password', 'Confirm Password', 'required|min_length[6]|matches[password]');
+            $this->form_validation->set_rules('password2', 'Confirm Password', 'required|min_length[6]|matches[password]');
             $this->form_validation->set_rules('contactno', 'Phone No', 'min_length[11]|max_length[11]');
 
             

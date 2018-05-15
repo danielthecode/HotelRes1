@@ -20,6 +20,7 @@
 <?php }  ?>
 <table id="mytable" class="table table-reponsive table-bordered">
               <thead>
+                <tr>
                 <th>Guest ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -28,6 +29,7 @@
                 <th>Phone Number</th>
                 <th>Email</th>
                 <th solspan="2" style="width:20%;text-align:center">Actions</th>
+                </tr>
               </thead>
               <tbody>
                  <?php foreach($guests AS $guest): ?>
@@ -55,4 +57,5 @@
       </div>
     </div>
 
+<br>
      

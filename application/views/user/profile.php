@@ -1,5 +1,5 @@
-<div class="container">
-	
+
+
 
 
 
@@ -7,10 +7,11 @@
  <h1> User Profile </h1>
  </div>
 
-<?php
-//print_r($results);
 
-foreach($profile as $profile) { ?>
+<div class="container">
+
+
+<?php foreach($profile as $profile) { ?>
 
  <div class="row">
       <strong class="col-sm-1">Firstname:</strong>
@@ -36,5 +37,9 @@ foreach($profile as $profile) { ?>
         <strong class="col-sm-1">Email:</strong>
         <div class="col-sm-3"><?php echo $profile->email; ?></div>
     </div>
- </div>
+
+		</div>
+
+		<br>
+
 <?php } ?>
