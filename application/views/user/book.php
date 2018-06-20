@@ -7,7 +7,7 @@
     <li data-target="#slider" data-slide-to="1"></li>
     <li data-target="#slider" data-slide-to="2"></li>
   </ul>
-  
+
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -35,7 +35,7 @@
     </div>
 
   </div>
-  
+
   <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#slider" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -48,7 +48,7 @@
 
 <div class="container-fluid">
 
-        
+
 
 <?php if(isset($_SESSION['success'])) {?>
 
@@ -57,78 +57,68 @@
 <?php } else if(isset($_SESSION['error'])) {?>
 <div class="alert alert-danger"><?php echo $_SESSION['error'];?></div>
 <?php }  ?>
-<form class="container" action="" method="POST" >
 
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label class="control-label" for="check_in">Check-In Date</label>
-      <input class="form-control" id="date" name="check_in" placeholder="MM/DD/YYY" value="<?php echo $_SESSION['checkin'];?>" type="text" readonly/>
-    </div>
+<?php foreach ($room as $room) {?>
 
-    <div class="col-md-6 mb-3">
-      <label for="check_out">Check-out Date</label>
-      <input placeholder="MM/DD/YYY" id="date" type="text" class="form-control"  value="<?php echo $_SESSION['checkout'];?>" name="check_out" readonly/>
-    </div>
-  </div>
+      <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top"  src="<?php echo base_url(); ?>uploads/<?php echo $room->room_img?>" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text"><?php echo $room->room_type?></p>
+                  <br>
+                  <p class="card-text"> <?php echo $room->room_desc ?></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <b>Price: <?php echo $room->room_price ?></b>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="number_of_guests">Number of Guests</label>
-      <input  type="text" class="form-control"  value="<?php echo $_SESSION['no_guests'];?>" name="no_guests" readonly/>
-    </div>
-
-    
-    <?php foreach ($room as $room) {?>
-    <div class="col-md-6 mb-3">
-      <label for="room_no">Room No</label>
-      <input  type="text" class="form-control"  value="<?php echo $room->room_no;?>" name="room_no" readonly/>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="room_type">Room Type</label>
-      <input type="text" class="form-control"  value="<?php echo $room->room_type;?>" name="room_type"readonly/>
-    </div>
-    </div>
-   <?php } ?>
-
-<?php
-                $this->session->set_flashdata('checkin', $_SESSION['checkin'] );
-                $this->session->set_flashdata('checkout', $_SESSION['checkout']);
-                $this->session->set_flashdata('no_guests', $_SESSION['no_guests']); ?>
-  <button class="btn btn-secondary btn-md" name="book">Book</button>
-</form>
-</div>
 <br>
+   <div class="col-md-1 ">
+     <label ><b>Check-In Date</b></label>
+         <p ><?php echo $_SESSION['checkin'];?></p>
+   </div>
 
-<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="check_in"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'yyyy/mm/dd',
-        container: container,
-        startDate: new Date(),
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    });
+   <div class="col-md-1">
+     <label class="control-label"><b>Check-Out Date</b></label>
+        <p > <?php echo $_SESSION['checkout'];?></p>
+      </div>
 
-
-    $(document).ready(function(){
-      var date_input=$('input[name="check_out"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'yyyy/mm/dd',
-        container: container,
-        startDate: new Date(),
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    });
-</script>
+      <div class="col-md-1">
+         <label class="control-label"><b>Number of Guests</b></label>
+            <p style="text-align:center"> <?php echo $_SESSION['no_guests'];?></p>
+          </div>
+          <form action="" method="POST" >
 
 
+
+                <input id="date" name="check_in" placeholder="MM/DD/YYY" value="<?php echo $_SESSION['checkin'];?>" type="hidden" readonly/>
+
+                <input placeholder="MM/DD/YYY" id="date" type="hidden" class="form-control"  value="<?php echo $_SESSION['checkout'];?>" name="check_out" readonly/>
+
+                <input  type="hidden" class="form-control"  value="<?php echo $_SESSION['no_guests'];?>" name="no_guests" readonly/>
+
+                <input  type="hidden" class="form-control"  value="<?php echo $room->room_no;?>" name="room_no" readonly/>
+
+                <input type="hidden" class="form-control"  value="<?php echo $room->room_type;?>" name="room_type"readonly/>
+
+             <?php } ?>
+
+          <?php
+                          $this->session->set_flashdata('result', $_SESSION['result'] );
+                          $this->session->set_flashdata('checkin', $_SESSION['checkin'] );
+                          $this->session->set_flashdata('checkout', $_SESSION['checkout']);
+                          $this->session->set_flashdata('no_guests', $_SESSION['no_guests']); ?>
+            <button class="btn btn-secondary btn-md" name="book">Book</button>
+          </form>
+</div>
+
+
+
+
+
+
+
+</div>

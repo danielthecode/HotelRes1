@@ -10,7 +10,7 @@ class Admin_model extends CI_Model{
             'room_desc'=> $this->input->post('description'),
         );
 
-        $this->db->insert('room', $data);
+        $this->db->insert('room', $this->db->escape_str($data));
 
         $id = $this->db->insert_id();
         return $id;
@@ -39,7 +39,7 @@ class Admin_model extends CI_Model{
     public function getRoom($id){
 
         $this->db->select('*');
-        $this->db->where('room_no', $id);
+        $this->db->where('room_no', $this->db->escape_str($id));
         $this->db->from('room');
         $query = $this->db->get();
         return $query->row();
@@ -56,26 +56,69 @@ class Admin_model extends CI_Model{
         );
 
         $this->db->where('room_no', $id);
-        $this->db->update('room', $data);
+        $this->db->update('room', $this->db->escape_str($data));
 
         return $id;
         
         
     }
 
-    public function get_reservations(){
+    public function get_pending_reservations(){
         
-        $this->db->select('*');
-        $this->db->from('reservation');
-        $query = $this->db->get();
+        $status = "pending";
+          $this->db->select('*');
+          $this->db->from('reservation');
+          $this->db->where('status', $this->db->escape_str($status));
+
+          $query = $this->db->get();
+
 
         return $query->result();
     }
 
+    public function get_rejected_reservation(){
+        
+        $status = "rejected";
+          $this->db->select('*');
+          $this->db->from('reservation');
+          $this->db->where('status', $this->db->escape_str($status));
+
+          $query = $this->db->get();
+
+
+        return $query->result();
+    }
+
+    
+
+      public function get_cancelled_reservation(){
+
+          $status = "cancelled";
+          $this->db->select('*');
+          $this->db->from('reservation');
+          $this->db->where('status', $this->db->escape_str($status));
+
+          $query = $this->db->get();
+
+          return $query->result();
+      }
+
+      public function get_approved_reservation(){
+
+        $status = "approved";
+        $this->db->select('*');
+        $this->db->from('reservation');
+        $this->db->where('status', $this->db->escape_str($status));
+
+          $query = $this->db->get();
+
+          return $query->result();
+      }
+
     public function getReservation($id){
 
         $this->db->select('*');
-        $this->db->where('res-id', $id);
+        $this->db->where('res-id', $$this->db->escape_str($id));
         $this->db->from('reservation');
         $query = $this->db->get();
         return $query->row();
@@ -86,11 +129,11 @@ class Admin_model extends CI_Model{
     public function updateReservation($id){
 
         $data = array(
-            'approved'=> $this->input->post('approval')
+            'status'=> $this->input->post('approval')
         );
 
-        $this->db->where('res_id', $id);
-        $this->db->update('reservation', $data);
+        $this->db->where('res_id', $this->db->escape_str($id));
+        $this->db->update('reservation', $this->db->escape_str($data));
 
         return $id;
         
@@ -128,7 +171,7 @@ class Admin_model extends CI_Model{
             
         );
 
-        $this->db->insert('employee', $data);
+        $this->db->insert('employee', $this->db->escape_str($data));
         $id = $this->db->insert_id();
         return $id;
     }
@@ -136,7 +179,7 @@ class Admin_model extends CI_Model{
     public function getEmployee($id){
 
         $this->db->select('*');
-        $this->db->where('employee_id', $id);
+        $this->db->where('employee_id', $this->db->escape_str($id));
         $this->db->from('employee');
         $query = $this->db->get();
         return $query->row();
@@ -153,10 +196,34 @@ class Admin_model extends CI_Model{
         );
 
         $this->db->where('employee_id', $id);
-        $this->db->update('employee', $data);
+        $this->db->update('employee', $this->db->escape_str($data));
 
         return $id;
         
         
+    }
+
+    public function get_current_password($username){
+
+        $this->db->select('*');
+        $this->db->from('employee');
+        $this->db->where('username', $this->db->escape_str($username));
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0){
+            return $query->row();
+
+        }
+        
+    }
+
+    public function update_password($username, $cnpassword){
+        $data['password'] = $cnpassword;
+
+        $this->db->where('username', $this->db->escape_str($username));
+        $this->db->update('employee', $this->db->escape_str($data));
+
+        return $username;
     }
 }

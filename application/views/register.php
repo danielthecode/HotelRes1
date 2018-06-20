@@ -52,8 +52,9 @@
     <div class="form-group">
       <button class="btn btn-dark btn-block" name="register">Register</button>
     </div>
-    
+
     </form>
+    <p class="text-center">Alreadyt have an account? <a href="login">Sign-in</a></p>
       </div>
 
  </div>

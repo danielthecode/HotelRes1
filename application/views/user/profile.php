@@ -2,44 +2,62 @@
 
 
 
+<br>
 
- <div class="jumbotron">
- <h1> User Profile </h1>
- </div>
+<div class="jumbotron">
+        <div class="container">
+          <h1>User Profile</h1>
+          <p>
+            This is your information
+          </p>
+          <div class="row">
+          <p><a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>/users/edit_profile" role="button">Edit Profile</a></p>
+          <br>
+          <p><a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>/users/index" role="button">Back Home</a></p>
+          <p><a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>/users/change_password" role="button">Change Password</a></p>
+</div>
+        </div>
+</div>
+          <br>
 
 
 <div class="container">
+<?php if(isset($_SESSION['success'])) {?>
 
+<div class="alert alert-success"><?php echo $_SESSION['success'];?></div>
+
+<?php } else if(isset($_SESSION['error'])) {?>
+<div class="alert alert-danger"><?php echo $_SESSION['error'];?></div>
+<?php }  ?>
 
 <?php foreach($profile as $profile) { ?>
 
- <div class="row">
-      <strong class="col-sm-1">Firstname:</strong>
-      <div class="col-sm-3"><?php echo $profile->first_name; ?></div>
-    </div>
+<table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Firstname:</td>
+                        <td><?php echo $profile->first_name; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Lastname:</td>
+                        <td><?php echo $profile->last_name; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Address:</td>
+                        <td><?php echo $profile->address; ?></td>
+                      </tr>
+                        <tr>
+                        <td>Phone Number:</td>
+                        <td><?php echo $profile->phone; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><?php echo $profile->email; ?></td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
 
-    <div class="row">
-      <strong class="col-sm-1">Lastname:</strong>
-      <div class="col-sm-3"><?php echo $profile->last_name; ?></div>
-    </div>
-
-    <div class="row">
-        <strong class="col-sm-1">Address:</strong>
-        <div class="col-sm-3"><?php echo $profile->address; ?></div>
-    </div>
-
-    <div class="row">
-        <strong class="col-sm-1">Phone:</strong>
-        <div class="col-sm-3"><?php echo $profile->phone; ?></div>
-    </div>
-
-    <div class="row">
-        <strong class="col-sm-1">Email:</strong>
-        <div class="col-sm-3"><?php echo $profile->email; ?></div>
-    </div>
-
-		</div>
-
-		<br>
-
+		
 <?php } ?>
+</div>

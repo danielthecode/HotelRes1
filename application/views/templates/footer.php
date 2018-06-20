@@ -1,10 +1,9 @@
 <br>
 <!-- Footer -->
-<footer class="py-3 bg-dark">
+<footer class="fixed-bottom bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <span class="text-muted"><p class="m-0 text-center text-white">Copyright &copy; The Hotel Booking 2018</p></span>
       </div>
-      <!-- /.container -->
     </footer>
 
 

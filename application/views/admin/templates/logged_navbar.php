@@ -1,10 +1,11 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php">The Hotel Booking</a>
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">The Hotel Booking</a>
   <ul class="nav navbar-nav navbar-right top-nav">
         <li class="dropdown">
-            <a  href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><b><?php echo $_SESSION['admin_username'] ?></b></a>
+        
+            <a  href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><span data-feather="user"></span><b><?php echo $_SESSION['admin_username'] ?></b></a>
             <ul class="dropdown-menu bg-dark navbar-dark">
-                <li><a class="nav-link" href="#">Change Password</a></li>
+                <li><a class="nav-link" href="<?php echo base_url(); ?>admin/change_password">Change Password</a></li>
                 <li class="divider"></li>
                 <li><a class="nav-link" href="<?php echo base_url(); ?>/admin_auth/logout"> Logout</a></li>
             </ul>
@@ -18,19 +19,14 @@
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+          <a class="nav-link" href="<?php echo base_url(); ?>admin/reservations_pending">
               <span data-feather="home"></span>
+              
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="search">
-              <span data-feather="search"></span>
-              Search
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>admin/reservations">
+            <a class="nav-link" href="<?php echo base_url(); ?>admin/reservations_pending">
               <span data-feather="file"></span>
               Reservations
             </a>
@@ -47,12 +43,6 @@
           <span>Hotel Facilities</span>
         </h6>
         <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Manage Hotels
-            </a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>admin/rooms">
               <span data-feather="file-text"></span>

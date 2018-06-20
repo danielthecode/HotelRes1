@@ -27,14 +27,14 @@
     <div class="form-group row">
         <label for="first_name" class="col-2 col-form-label">First Name:</label>
         <div class="col-10">
-            <input type="text" name="first_name" value="" class="form-control" required>
+            <input  name="first_name"  class="form-control" required>
         </div>
     </div>
 
     <div class="form-group row">
             <label for="last_name" class="col-2 col-form-label">Last Name:</label>
             <div class="col-10">
-                <textarea name="last_name" cols="30" rows="4" class="form-control" required></textarea>
+                <input name="last_name" type="text" value="" class="form-control" required></textarea>
             </div>
     </div>
 
@@ -85,7 +85,7 @@
                 <button class="btn btn-primary btn-lng" name="add">Add New Employee</button>
             </div>
         </div>
-    
+
 </form>
 </div>
 

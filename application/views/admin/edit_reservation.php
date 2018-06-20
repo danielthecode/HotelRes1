@@ -2,12 +2,12 @@
 <br>
 <div class="jumbotron">
         <div class="container">
-          <h1>Edit Room</h1>
+          <h1>Change Reservation Status</h1>
           <p>
-            This is the Edit Room Page.
-            Here you can <b>Edit a room</b>
+            This is the Change Reservation Page.
+            Here you can <b>Edit a reservations status</b>
           </p>
-          <p><a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>/admin/reservations" role="button">Back To Rooms</a></p>
+          <p><a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>/admin/reservations_pending" role="button">Back To Pending Reservation</a></p>
         </div>
     </div>
 
@@ -20,7 +20,7 @@
 <div class="alert alert-danger"><?php echo $_SESSION['error'];?></div>
 <?php }  ?>
 <form action="" method="POST" class="col s12">
-    
+
 
     <div class="form-group row">
     <label for="approval" class="col-2 col-form-label">Approval:</label>
@@ -28,6 +28,7 @@
         <select class="form-contro;" name="approval" id="">
         <option value=""></option>
         <option value="Approved">approved</option>
+        <option value="Rejected">rejected</option>
         </select>
       </div>
     </div>
@@ -38,7 +39,7 @@
                 <button class="btn btn-primary btn-lng" name="update">Update Room</button>
             </div>
         </div>
-    
+
 </form>
 </div>
 

@@ -4,12 +4,19 @@
       feather.replace()
     </script>
 
-<script> 
+<script>
           $(document).ready(function() {
     $('#mytable').DataTable();
 } );
-</script> 
+</script>
 
+<br>
+<!-- Footer -->
+<footer class="fixed-bottom bg-dark">
+      <div class="container">
+        <span class="text-muted"><p class="m-0 text-center text-white">Copyright &copy; The Hotel Booking 2018</p></span>
+      </div>
+    </footer>
 
 
 

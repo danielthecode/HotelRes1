@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php if(isset($title)){ echo $title; }?></title>
+    <title><?php echo $title;?></title>
 
     <!-- Bootstrap -->
 
@@ -18,7 +18,21 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashboard.css">
+
     <style type="text/css">
+    body{
+  		margin-bottom: 50px;
+      }
+      
+      .jumbotron {
+    
+    background-color: #fff;
+  }
+
+  .jumbotron p{
+	  padding : 5px;
+  }
+
   	.login-form {
   		width: 340px;
       	margin: 150px auto;
@@ -57,6 +71,13 @@
 
   			.black-background {background-color:#000000;}
   .white {color:#ffffff;}
+
+footer {
+    position: fixed;
+    height: 40px;
+    bottom: 0;
+    width: 100%;
+}
   </style>
   </head>
 

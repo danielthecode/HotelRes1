@@ -2,10 +2,10 @@
 <br>
 <div class="jumbotron">
         <div class="container">
-          <h1>Edit Room</h1>
+          <h1>Upload Image</h1>
           <p>
-            This is the Edit Room Page.
-            Here you can <b>Edit a room</b>
+            This is the Upload Image Page.
+            Here you can <b>Upload an image for a room</b>
           </p>
           <p><a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>/admin/rooms" role="button">Back To Rooms</a></p>
         </div>

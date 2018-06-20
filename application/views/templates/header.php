@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Test</title>
+	<title><?php echo $title; ?></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -18,7 +18,27 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 
 
+
 	<style type="text/css">
+	body{
+		margin-bottom: 50px;
+	}
+
+	.jumbotron {
+    
+    background-color: #fff;
+  }
+
+  .jumbotron p{
+	  padding : 5px;
+  }
+
+	#map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+      }
+
 	.login-form {
 		width: 340px;
     	margin: 50px auto;
@@ -57,6 +77,13 @@
 
 			.black-background {background-color:#000000;}
 .white {color:#ffffff;}
+
+footer {
+    position: fixed;
+    height: 40px;
+    bottom: 0;
+    width: 100%;
+}
 </style>
 </head>
 <body>

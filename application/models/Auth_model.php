@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Auth_model extends CI_Model{
 
@@ -15,5 +15,5 @@ class Auth_model extends CI_Model{
 
         return $query->result();
     }
-    
+
 }

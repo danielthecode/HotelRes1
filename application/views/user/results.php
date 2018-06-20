@@ -63,20 +63,24 @@
   <div class="row">
     <div class="col-md-6 mb-3">
       <label class="control-label" for="check_in">Check-In Date</label>
-      <input class="form-control" id="date" name="check_in" placeholder="MM/DD/YYY" value="<?php echo $_SESSION['checkin'];?>" type="text" disabled/>
+      <input class="form-control" id="date" name="check_in" placeholder="MM/DD/YYY" value="<?php echo $_SESSION['checkin'];?>" type="text" />
     </div>
 
     <div class="col-md-6 mb-3">
       <label for="check_out">Check-out Date</label>
-      <input placeholder="MM/DD/YYY" id="date" type="text" class="form-control"  value="<?php echo $_SESSION['checkout'];?>" name="check_out" disabled>
+      <input placeholder="MM/DD/YYY" id="date" type="text" class="form-control"  value="<?php echo $_SESSION['checkout'];?>" name="check_out" >
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6 mb-3">
       <label for="number_of_guests">Number of Guests</label>
-      <select class="form-control" name="number_guest"  disabled>
+      <select class="form-control" name="number_guest"  >
       <option value="<?php echo $_SESSION['no_guests'];?>"><?php echo $_SESSION['no_guests'];?></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
       </select>
     </div>
 
@@ -106,6 +110,7 @@
                       <button type="button" class="btn btn-sm btn-outline-secondary">Book</button>
                   </a>
                   <?php
+                  $this->session->set_flashdata('result', $_SESSION['result'] );
                 $this->session->set_flashdata('checkin', $_SESSION['checkin'] );
                 $this->session->set_flashdata('checkout', $_SESSION['checkout']);
                 $this->session->set_flashdata('no_guests', $_SESSION['no_guests']); ?>

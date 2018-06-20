@@ -23,7 +23,7 @@
             $no_guests = $this->input->post('number_guest');
 
 
-                $string = "SELECT * FROM room r where r.room_no NOT IN (SELECT res.room_id FROM reservation res WHERE (res.check_in_date <= '$checkout' AND res.check_out_date >= '$checkin') OR( res.check_in_date >= '$checkout' AND res.check_out_date <= '$checkin'))";
+                $string = "SELECT * FROM room r where r.room_no NOT IN (SELECT res.room_id FROM reservation res WHERE (res.status != 'cancelled' ) AND (res.status = 'pending') AND (res.check_in_date <= '$checkout' AND res.check_out_date >= '$checkin') OR( res.check_in_date >= '$checkout' AND res.check_out_date <= '$checkin'))";
 
                 $query= $this->db->query($string);
 
@@ -38,55 +38,94 @@
                 $this->session->set_flashdata('no_guests', $no_guests);
 
                  $this->session->set_flashdata('success', 'Rooms are available');
-                   
+
                    redirect('users/results','refresh');
-                
-               
-    
-    
+
+
+
+
             } else{
 
                 $this->session->set_flashdata('error', 'Room has been booked');
-            
+
                     redirect('users/index','refresh');
-                   
-            
+
+
                 }
-            
-                
-                
-                
-                
+
+
+
+
+
 
         }
-            
+
         public function get_room($id){
 
-           
+
 
 
             $this->db->select('*');
             $this->db->from('room');
-            $this->db->where('room_no =', $id);
+            $this->db->where('room_no =', $this->db->escape_str($id));
             $query = $this->db->get();
 
             return $query->result();
-            
-            
+
+
 
         }
 
-        
+
 
         public function get_profile($username){
 
             $this->db->select('*');
             $this->db->from('guest');
-            $this->db->where('username', $username);
-        
+            $this->db->where('username', $this->db->escape_str($username));
+
         $query = $this->db->get();
+
+
         return $query->result();
 
+        }
+
+        public function update_profile($username){
+            $data = array(
+                'address'=> $this->input->post('address'),
+                'phone'=> $this->input->post('phone'),
+                'email'=> $this->input->post('email')
+            );
+
+            $this->db->where('username', $this->db->escape_str($username));
+            $this->db->update('guest', $this->db->escape_str($data));
+
+            return $username;
+        }
+
+        public function get_current_password($username){
+
+            $this->db->select('*');
+            $this->db->from('guest');
+            $this->db->where('username', $this->db->escape_str($username));
+
+            $query = $this->db->get();
+
+            if($query->num_rows() > 0){
+                return $query->row();
+
+            }
+
+        }
+
+        public function update_password($username, $cnpassword){
+            $data['password'] = $cnpassword;
+
+            $this->db->where('username', $this->db->escape_str($username));
+            $this->db->update('guest', $this->db->escape_str($data));
+
+            return $username;
         }
 
         public function book($userid){
@@ -98,23 +137,78 @@
                 'guest_id' => $userid,
                 'room_id' => $this->input->post('room_no')
                 );
-        
-            $this->db->insert('reservation', $data);
-        
+
+            $this->db->insert('reservation', $this->db->escape_str($data));
+
             $id = $this->db->insert_id();
             return $id;
-            
+
         }
 
 
         public function get_reservation($userid){
 
-            $this->db->select('*');
-            $this->db->from('reservation');
-            $this->db->where('guest_id', $userid);
-            
+          $status = "pending";
+          $this->db->select('*');
+          $this->db->from('reservation');
+          $this->db->where('guest_id', $this->db->escape_str($userid));
+          $this->db->where('status', $this->db->escape_str($status));
+
             $query = $this->db->get();
-    
+
             return $query->result();
         }
-}
+
+        public function get_cancelled_reservation($userid){
+
+            $status = "cancelled";
+            $this->db->select('*');
+            $this->db->from('reservation');
+            $this->db->where('guest_id', $this->db->escape_str($userid));
+            $this->db->where('status', $this->db->escape_str($status));
+
+            $query = $this->db->get();
+
+            return $query->result();
+        }
+
+        public function get_approved_reservation($userid){
+
+          $status = "approved";
+          $this->db->select('*');
+          $this->db->from('reservation');
+          $this->db->where('guest_id', $this->db->escape_str($userid));
+          $this->db->where('status', $this->db->escape_str($status));
+
+            $query = $this->db->get();
+
+            return $query->result();
+        }
+
+        public function get_rejected_reservation($userid){
+
+          $status = "rejected";
+          $this->db->select('*');
+          $this->db->from('reservation');
+          $this->db->where('guest_id', $this->db->escape_str($userid));
+          $this->db->where('status', $this->db->escape_str($status));
+
+            $query = $this->db->get();
+
+            return $query->result();
+        }
+
+
+        public function cancel_booking($id){
+
+
+            $string = "UPDATE reservation
+            SET status = 'cancelled'
+            WHERE res_id = '$id'";
+
+                    $query= $this->db->query($string);
+
+        }
+
+
+        }

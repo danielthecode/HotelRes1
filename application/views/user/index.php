@@ -90,7 +90,7 @@
 
 <script>
     $(document).ready(function(){
-      var date_input=$('input[name="check_in"]'); //our date input has the name "date"
+      var date_input=$('input[name="check_in"]');
       var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
       var options={
         format: 'yyyy/mm/dd',
@@ -104,7 +104,7 @@
 
 
     $(document).ready(function(){
-      var date_input=$('input[name="check_out"]'); //our date input has the name "date"
+      var date_input=$('input[name="check_out"]');
       var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
       var options={
         format: 'yyyy/mm/dd',
@@ -113,7 +113,7 @@
         todayHighlight: true,
         autoclose: true,
       };
-      date_input.datepicker(options);
+      date_input.datepicker(options)
     });
 </script>
 <br>
